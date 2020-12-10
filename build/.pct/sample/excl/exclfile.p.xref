@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<Cross-reference xmlns="uri:schemas-progress-com:XREFD:0005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Source xmlns="uri:schemas-progress-com:XREFD:0005" File-name="src\procedures\sample\excl\exclfile.p">
+    <Source-guid>8r4sSOzumIp2FPoXGGKEjQ</Source-guid>
+    <File-num>1</File-num>
+    <Reference Reference-type="COMPILE" Object-identifier="sample\excl\exclfile.p">
+      <Source-guid>8r4sSOzumIp2FPoXGGKEjQ</Source-guid>
+      <File-num>1</File-num>
+      <Ref-seq>1</Ref-seq>
+      <Line-num>1</Line-num>
+      <Object-context/>
+      <Access-mode/>
+      <Data-member-ref/>
+      <Temp-ref/>
+      <Detail/>
+      <Is-static>false</Is-static>
+      <Is-abstract>false</Is-abstract>
+    </Reference>
+    <Reference Reference-type="CPINTERNAL" Object-identifier="utf-8">
+      <Source-guid>8r4sSOzumIp2FPoXGGKEjQ</Source-guid>
+      <File-num>1</File-num>
+      <Ref-seq>2</Ref-seq>
+      <Line-num>1</Line-num>
+      <Object-context/>
+      <Access-mode/>
+      <Data-member-ref/>
+      <Temp-ref/>
+      <Detail/>
+      <Is-static>false</Is-static>
+      <Is-abstract>false</Is-abstract>
+    </Reference>
+    <Reference Reference-type="CPSTREAM" Object-identifier="utf-8">
+      <Source-guid>8r4sSOzumIp2FPoXGGKEjQ</Source-guid>
+      <File-num>1</File-num>
+      <Ref-seq>3</Ref-seq>
+      <Line-num>1</Line-num>
+      <Object-context/>
+      <Access-mode/>
+      <Data-member-ref/>
+      <Temp-ref/>
+      <Detail/>
+      <Is-static>false</Is-static>
+      <Is-abstract>false</Is-abstract>
+    </Reference>
+    <Reference Reference-type="STRING" Object-identifier="Procedure in excluded directory">
+      <Source-guid>8r4sSOzumIp2FPoXGGKEjQ</Source-guid>
+      <File-num>1</File-num>
+      <Ref-seq>4</Ref-seq>
+      <Line-num>1</Line-num>
+      <Object-context/>
+      <Access-mode/>
+      <Data-member-ref/>
+      <Temp-ref/>
+      <Detail/>
+      <Is-static>false</Is-static>
+      <Is-abstract>false</Is-abstract>
+      <String-ref>
+        <Source-guid>8r4sSOzumIp2FPoXGGKEjQ</Source-guid>
+        <Ref-seq>4</Ref-seq>
+        <Max-length>31</Max-length>
+        <Justification>NONE</Justification>
+        <Translatable>true</Translatable>
+      </String-ref>
+    </Reference>
+  </Source>
+</Cross-reference>

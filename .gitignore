@@ -1,0 +1,8 @@
+.scannerwork
+.sonar
+.sonarlint
+.proparse
+.settings
+.tokens
+db
+sonarlint-report.txt

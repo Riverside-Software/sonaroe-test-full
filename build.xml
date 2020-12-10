@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- How to execute : ant -lib ..\pct\dist\PCT.jar -DDLC=%DLC% clean build -->
+<project name="TEST" default="build">
+  <taskdef resource="PCT.properties" />
+  <taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask" />
+
+  <property environment="env" />
+  <property name="DLC" value="${env.DLC}" />
+  <!-- Default values for local development instance of SonarQube -->
+  <property name="SONAR_URL" value="http://localhost:9000" />
+
+  <target name="init">
+    <mkdir dir="db" />
+    <mkdir dir="build" />
+    <mkdir dir="profiler" />
+    <mkdir dir="dump" />
+    <PCTVersion />
+    <ProgressVersion dlcHome="${DLC}" fullVersion="dlc.version.full" />
+    <echo message="${dlc.version.full}" />
+  </target>
+
+  <target name="clean">
+    <delete dir="db" />
+    <delete dir="build" />
+    <delete dir="profiler" />
+    <delete dir="dump" />
+    <delete dir="test-output" />
+  </target>
+
+  <target name="db" depends="init">
+    <sports2000 destDir="db" dbName="sp2k" dlcHome="${DLC}" />
+    <PCTDumpSchema destFile="dump/sp2k.df" dlcHome="${DLC}">
+      <DBConnection dbName="sp2k" dbDir="db" singleUser="true" />
+    </PCTDumpSchema>
+    <echo file="dump/empty.df" />
+  </target>
+
+  <target name="build" depends="db">
+    <PCTCompile destdir="build" dlcHome="${DLC}" cpinternal="utf-8" cpstream="utf-8" cpcoll="basic" cpcase="basic" listing="true" relativePaths="true" xmlXref="true" keepXref="true" requireFullKeywords="false" requireFullNames="true" requireFieldQualifiers="true" requireReturnValues="true">
+      <fileset dir="src/classes" includes="**/*.cls" />
+      <fileset dir="src/procedures" includes="**/*.p" />
+      <fileset dir="src/tests" includes="**/*.p,**/*.cls" />
+      <propath>
+        <pathelement location="src/classes" />
+        <pathelement location="src/procedures" />
+        <pathelement location="src/tests" />
+      </propath>
+      <PCTConnection dbName="sp2k" dbDir="db" singleUser="true">
+        <Alias name="sp2k" />
+        <Alias name="foobar" />
+      </PCTConnection>
+    </PCTCompile>
+
+    <!-- Unit tests -->
+    <mkdir dir="test-output" />
+    <ABLUnit dlcHome="${DLC}" destDir="test-output" failOnError="false" writeLog="true">
+      <fileset dir="src/tests" includes="*.cls" />
+      <propath>
+        <pathelement location="build"/>
+        <pathelement location="src/classes" />
+        <pathelement location="src/procedures" />
+        <pathelement location="src/tests" />
+      </propath>
+      <Profiler enabled="true" outputDir="profiler" coverage="true" />
+      <PCTConnection dbName="sp2k" dbDir="db" singleUser="true">
+        <PCTAlias name="sp2k" />
+        <PCTAlias name="foobar" />
+      </PCTConnection>
+    </ABLUnit>
+    <xmltask source="test-output/results.xml" dest="test-output/sonar.xml">
+      <rename path="//testsuites" to="testExecutions" />
+      <attr path="//testExecutions" attr="version" value="1" />
+      <rename path="//testsuite" to="file" />
+      <rename path="//file/@name" to="path" />
+      <rename path="//testcase" to="testCase" />
+      <remove path="//testCase/@time" />
+      <remove path="//file/properties" />
+      <attr path="//testCase" attr="duration" value="0" />
+    </xmltask>
+
+    <PCTRun procedure="sample/test1.p" dlcHome="${DLC}">
+      <propath location="build" />
+      <Profiler enabled="true" outputDir="profiler" coverage="true" />
+      <PCTConnection dbName="sp2k" dbDir="db" singleUser="true">
+        <PCTAlias name="sp2k" />
+        <PCTAlias name="foobar" />
+      </PCTConnection>
+    </PCTRun>
+    <PCTRun procedure="sample/cov.p" dlcHome="${DLC}">
+      <propath location="build" />
+      <Profiler enabled="true" outputDir="profiler" coverage="true" />
+    </PCTRun>
+    <PCTRun procedure="sample/test20.p" dlcHome="${DLC}">
+      <propath location="build" />
+      <Profiler enabled="true" outputDir="profiler" coverage="true" />
+    </PCTRun>
+  </target>
+
+</project>

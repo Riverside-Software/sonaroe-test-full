@@ -1,0 +1,2 @@
+[16] [src\procedures\sample\test1.p] You must qualify the field "custnum" with the table name "Customer" due to the "require-field-qualifiers" compiler option. (14789)
+[3] [src\procedures\sample\inc\test.i] WARNING: Program src\procedures\sample\inc\test.i, Line 3 is an expression statement that evaluates to a constant. (12115)

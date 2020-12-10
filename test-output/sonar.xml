@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testExecutions errors="0" failures="0" name="ABLUnit" tests="2" version="1">
+    <file classname="ABLUnitTest1" errors="0" failures="0" id="1" path="C:\Users\gquer\Projets\sonaroe-test-full\src\tests\ABLUnitTest1.cls" skipped="0" tests="1" time=",003">
+        <testCase classname="ABLUnitTest1" duration="0" name="test1" status="Success"/>
+    </file>
+    <file classname="ABLUnitTest2" errors="0" failures="0" id="3" path="C:\Users\gquer\Projets\sonaroe-test-full\src\tests\ABLUnitTest2.cls" skipped="0" tests="1" time="0">
+        <testCase classname="ABLUnitTest2" duration="0" name="test2" status="Success"/>
+    </file>
+</testExecutions>

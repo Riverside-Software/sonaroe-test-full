@@ -1,0 +1,1 @@
+[43] [src\procedures\sample\test2.p] All code paths in user-defined function, method, or property getter "f1" must return a value due to the "require-return-values" compiler option. (19822)

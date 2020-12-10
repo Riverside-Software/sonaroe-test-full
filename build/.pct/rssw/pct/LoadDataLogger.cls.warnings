@@ -1,0 +1,4 @@
+[160] [src\classes\rssw\pct\LoadDataLogger.cls] All code paths in user-defined function, method, or property getter "CountRow" must return a value due to the "require-return-values" compiler option. (19822)
+[198] [src\classes\rssw\pct\LoadDataLogger.cls] All code paths in user-defined function, method, or property getter "SetTableBailed" must return a value due to the "require-return-values" compiler option. (19822)
+[230] [src\classes\rssw\pct\LoadDataLogger.cls] All code paths in user-defined function, method, or property getter "SetPolicyBailed" must return a value due to the "require-return-values" compiler option. (19822)
+[234] [src\classes\rssw\pct\LoadDataLogger.cls] All code paths in user-defined function, method, or property getter "CountCDCRow" must return a value due to the "require-return-values" compiler option. (19822)
